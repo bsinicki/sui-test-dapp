@@ -38,7 +38,7 @@ function App() {
           style={{ background: "var(--gray-a2)", minHeight: 500 }}
         >
           {currentAccount ? (
-             (
+          (
               <MakePayment
                 onCreated={(id) => {
                   window.location.hash = id;
@@ -48,10 +48,15 @@ function App() {
             )
           ) : (
             <Heading>Please connect your wallet</Heading>
+
           )}
-          <div>
-            <Heading>tx ID: {counterId}</Heading>
-          </div>
+           <div>
+            {counterId && (
+              <div>
+                <Heading>Tx ID: {counterId}</Heading>
+              </div>
+            )}
+           </div>
         </Container>
       </Container>
     </>

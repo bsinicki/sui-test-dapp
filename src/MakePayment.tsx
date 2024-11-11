@@ -19,15 +19,15 @@ export function MakePayment({
     const tx = new Transaction();
 
     const pay =
-      "0x58bcf4d05e2c7ad9520ad8ba9ee3cb681e2a39ff62f6d7bb6d0ce8e95dcea384";
+      "0xd1ba872771a986563deb19c1a8bab640a2d60df12a15b2373ecc407e12ea8944";
     const packageId =
-      "0x8df135cdba18ed299d2e9e1116c73a4dcb4c2edecf1e6efa7888f2027bc96a53::pay::pay";
+      "0x272500990eb152a7dd2ba4bdb825a6780e6b16443a4a046eec38d11675e16ad5::pay::pay";
 
-    const [coin] = tx.splitCoins(tx.gas, [tx.pure.u64(2000000000)]);
+    const [coin] = tx.splitCoins(tx.gas, [tx.pure.u64(200000000)]);
 
     tx.moveCall({
       target: `${packageId}::pay::pay`,
-      arguments: [tx.object(pay), coin, tx.pure.u64(1234567890)],
+      arguments: [tx.object(pay), coin, tx.pure.u64(Math.floor(Math.random() * 100000))],
       // typeArguments: ["0x2::sui::SUI"],
     });
     tx.setGasBudget(10000000);
